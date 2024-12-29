@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>------------</title>
+    <link rel="stylesheet" href="css/index.css">
+
+</head>
+<body>
+    <div class="main-container">
+        <h1>ברוכים הבאים לאתר המשחקים הכי שווה בעולם שאנחנו יצרנו</h1>
+        <div class="btn-container">
+            <button class="connect" onclick="showConnect()">התחבר</button>
+            <button class="register" onclick="showRegister()">הרשם</button>
+        </div>
+        <div class="form-container" id="register-container">
+            <button class="close-button" onclick="goBack()">&times;</button>
+            <form>
+                <input type="text" id="firstName" name="firstName" placeholder="שם פרטי"><br>
+                <input type="text" id="lastName" name="lastName" placeholder="שם משפחה"><br>
+                <input type="email" id="email" name="email" placeholder="כתובת מייל"><br>
+                <input type="text" id="username" name="username" placeholder="בחר שם משתמש משלך"><br>
+                <input type="password" id="password" name="password" placeholder="בחר סיסמה"><br>
+                <input type="password" id="confirmPassword" name="confirmPassword" placeholder="אמת את הסיסמה"><br>
+                <div class="accept">
+                    <input type="checkbox" id="terms" name="terms">
+                    <label for="terms">אני מסכים לתנאי השימוש</label>
+
+                </div>
+                <input type="submit" class="submit" value="הרשם">
+            </form>
+        </div>
+        <div class="form-container" id="connect-container">
+            <button class="close-button" onclick="goBack()">&times;</button>
+            <form>
+                <input type="text" id="loginUsername" name="loginUsername" placeholder="שם משתמש"><br>
+                <input type="password" id="loginPassword" name="loginPassword" placeholder="סיסמה"><br>
+                <input type="submit" class="submit" value="התחבר">
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function showRegister() {
+            document.querySelector('.main-container h1').style.display='none';
+            document.querySelector('.btn-container').style.display='none';
+            document.getElementById('register-container').style.display = 'block';
+        }
+
+        function showConnect() {
+            document.querySelector('.main-container h1').style.display='none';
+            document.querySelector('.btn-container').style.display='none';
+            document.getElementById('connect-container').style.display = 'block';
+        }
+
+        function goBack() {
+            document.querySelector('.main-container h1').style.display='block';
+            document.querySelector('.btn-container').style.display='block';
+            document.getElementById('register-container').style.display = 'none';
+            document.getElementById('connect-container').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
