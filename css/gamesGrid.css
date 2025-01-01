@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Sixtyfour&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Vinyl&display=swap');
 
 * {
     margin: 0;
@@ -47,14 +49,21 @@ nav {
     align-items: center;
     justify-content: center;
     text-align: center;
-    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('/api/placeholder/1920/1080');
-    background-size: cover;
+  background-size: cover;
     background-position: center;
-}
+    background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR0E-to5EHMGdsOYtWf2sGkWO7UguQjy5rfGA&s")
+   }
 
 .hero-content h1 {
     font-size: 48px;
     margin-bottom: 20px;
+    color: #060a00;
+    font-family:'Sixtyfour', sans-serif;/* 'Rubik Vinyl', sans-serif;  */
+    font-weight: bold;
+    text-transform: uppercase; /* כל האותיות גדולות */
+    font-size: 2rem;
+    margin: 0;
+    padding: 0;
 }
 
 .scroll-text {
@@ -134,3 +143,4 @@ nav {
         grid-template-columns: 1fr;
     }
 }
+
