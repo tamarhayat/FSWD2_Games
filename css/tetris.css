@@ -1,0 +1,45 @@
+html{
+    direction: rtl;
+}
+body {
+    text-align: center;
+    background-color: #333;
+    color: white;
+}
+
+#game {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+#grid {
+    display: grid;
+    grid-template-columns: repeat(13, 30px); 
+    grid-template-rows: repeat(17, 30px);
+    background-color: #555; 
+    gap: 1px;
+}
+
+
+#grid div {
+    width: 30px;
+    height: 30px;
+    background-color: #555; 
+}
+
+
+#score {
+    margin-top: 20px;
+    font-size: 1.2em;
+}
+#grid div.shape {
+    background-color: blue;
+    border: 0.5px solid black;
+}
+
+#grid div.shapeBoard{
+    background-color: red;
+    border: 0.5px solid black;
+
+}
