@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Zone</title>
+    <script src="gameLogic.js" defer></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #1a1a1a;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: rgba(26, 26, 26, 0.95);
+            z-index: 1000;
+        }
+
+        .logo {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .menu {
+            display: flex;
+            gap: 30px;
+        }
+
+        .menu a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        .hero {
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('/api/placeholder/1920/1080');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero-content h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .scroll-text {
+            text-align: center;
+            padding: 40px 0;
+            font-size: 24px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .scroll-text.visible {
+            opacity: 1;
+        }
+
+        .games-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .game-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            padding: 20px;
+        }
+
+        .game-item {
+            background: #2a2a2a;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+
+        .game-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .game-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .game-info {
+            padding: 15px;
+        }
+
+        .game-info h3 {
+            margin-bottom: 5px;
+        }
+
+        .game-info p {
+            color: #888;
+        }
+
+        .score-display {
+            position: fixed;
+            top: 20px;
+            right: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px 20px;
+            border-radius: 20px;
+            z-index: 1001;
+        }
+
+        @media (max-width: 900px) {
+            .game-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .game-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="#" class="logo">GAME ZONE</a>
+
+            <div class="score-display" onclick="CountScore()">
+                Total Score: <span id="score">0</span>
+
+            </div>
+    </nav>
+
+
+
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Gaming Paradise<br>Awaits</h1>
+            <p>Experience the thrill of gaming excellence</p>
+        </div>
+    </section>
+
+    <div id="games" class="scroll-text">BROWSE GAMES</div>
+
+    <section class="games-container">
+        <div class="game-grid">
+            <div class="game-item">
+                <a href="games/adventure.html">
+                    <img src="/api/placeholder/400/300" alt="Adventure Quest">
+                    <div class="game-info">
+                        <h3>Adventure Quest</h3>
+                        <p>High Score: 350</p>
+                    </div>
+                </a>
+            </div>
+            <div class="game-item">
+                <a href="games/space.html">
+                    <img src="/api/placeholder/400/300" alt="Space Shooter">
+                    <div class="game-info">
+                        <h3>Space Shooter</h3>
+                        <p>High Score: 280</p>
+                    </div>
+                </a>
+            </div>
+            <div class="game-item">
+                <a href="games/puzzle.html">
+                    <img src="/api/placeholder/400/300" alt="Puzzle Master">
+                    <div class="game-info">
+                        <h3>Puzzle Master</h3>
+                        <p>High Score: 420</p>
+                    </div>
+                </a>
+            </div>
+            <div class="game-item">
+                <a href="games/racing.html">
+                    <img src="/api/placeholder/400/300" alt="Racing Pro">
+                    <div class="game-info">
+                        <h3>Racing Pro</h3>
+                        <p>High Score: 890</p>
+                    </div>
+                </a>
+            </div>
+            <div class="game-item">
+                <a href="games/strategy.html">
+                    <img src="/api/placeholder/400/300" alt="Strategy Wars">
+                    <div class="game-info">
+                        <h3>Strategy Wars</h3>
+                        <p>High Score: 670</p>
+                    </div>
+                </a>
+            </div>
+            <div class="game-item">
+                <a href="games/memory.html">
+                    <img src="/api/placeholder/400/300" alt="Memory Match">
+                    <div class="game-info">
+                        <h3>Memory Match</h3>
+                        <p>High Score: 540</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        window.addEventListener('scroll', () => {
+            const scrollText = document.querySelector('.scroll-text');
+            const scrollPosition = window.scrollY;
+            
+            if (scrollPosition > 100) {
+                scrollText.classList.add('visible');
+            } else {
+                scrollText.classList.remove('visible');
+            }
+        });
+    </script>
+</body>
+</html>
