@@ -21,20 +21,21 @@ regform.addEventListener("submit", (event) => {
         return;  
     }
     
+    //get the inputs
     const firstname = document.getElementById("firstName").value;
     const lastname = document.getElementById("lastName").value;
     const email = document.getElementById("email").value;
     const username =document.getElementById("username").value;
     const password =passwordField.value;
     
-    const user = {
+    const user = {   //create an object
         firstname: firstname,
         lastname: lastname,
         email: email,
         username: username,
         password: password
     };
-    //get all the users
+    //get all the users from the local storage
     let users = JSON.parse(localStorage.getItem("usersDetails")) || [];
 
     // save in LocalStorage
