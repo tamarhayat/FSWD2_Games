@@ -3,16 +3,24 @@ let grid = [];
 let score = 0;
 let highScore = localStorage.getItem('2048-highScore') || 0;
 const gridSize = 4;
+win= false;
 
 document.getElementById('highScore').textContent = highScore;
-
 function updateHighScore() {
     if (score > highScore) {
         highScore = score;
         localStorage.setItem('2048-highScore', highScore);
-        document.getElementById('highScore').textContent = highScore;
+        
+        // Update game state
+        const game2048 = gameState.games.find(g => g.name === '2048');
+        if (game2048) {
+            game2048.highScore = highScore;
+            game2048.lastPlayed = new Date();
+            updateScoreDisplay();
+        }
     }
 }
+
 function initGrid() {
     const gridElement = document.getElementById('grid');
     gridElement.innerHTML = '';
@@ -51,7 +59,7 @@ function addNewTile() {
             }
         }
     }
-    
+ 
     if (emptyCells.length > 0) {
         const {i, j} = emptyCells[Math.floor(Math.random() * emptyCells.length)];
         grid[i][j] = Math.random() < 0.9 ? 2 : 4;
@@ -81,6 +89,9 @@ function move(direction) {
                 score += newGrid[newRow][newCol];
                 newGrid[newRow - deltaRow][newCol - deltaCol] = 0;
                 moved = true;
+ 
+       checkWin( newGrid[newRow][newCol]);
+
                 break;
             } else {
                 break;
@@ -90,7 +101,8 @@ function move(direction) {
             newCol += deltaCol;
         }
     }
-
+if (!win)
+{
     switch(direction) {
         case 'up':
             for (let col = 0; col < gridSize; col++) {
@@ -127,9 +139,10 @@ function move(direction) {
         addNewTile();
         updateDisplay();
         checkGameOver();
-    }
-}
 
+    }}
+}
+//full gride
 function checkGameOver() {
     for (let i = 0; i < gridSize; i++) {
         for (let j = 0; j < gridSize; j++) {
@@ -143,10 +156,22 @@ function checkGameOver() {
     document.getElementById('gameOver').style.display = 'flex';
     return true;
 }
+//when gets 2048
+function checkWin(numVal) {
+
+    if (numVal === 2048) { 
+        document.getElementById('youWon').style.display = 'flex';
+        win= true;
+        return true;
+
+    }
+}
 
 function newGame() {
     score = 0;
+    win= false;
     document.getElementById('gameOver').style.display = 'none';
+    document.getElementById('youWon').style.display = 'none';
     initGrid();
     addNewTile();
     addNewTile();

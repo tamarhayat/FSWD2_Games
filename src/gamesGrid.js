@@ -2,6 +2,7 @@
 const gameState = {
     games: [
         { id: 1, name: 'Adventure Quest', currentScore: 0, highScore: 350, lastPlayed: null },
+        { id: 7, name: '2048', currentScore: 0, highScore: 0, lastPlayed: null },
         { id: 2, name: 'Space Shooter', currentScore: 0, highScore: 280, lastPlayed: null },
         { id: 3, name: 'Puzzle Master', currentScore: 0, highScore: 420, lastPlayed: null },
         { id: 4, name: 'Racing Pro', currentScore: 0, highScore: 890, lastPlayed: null },
@@ -98,6 +99,9 @@ function initializeEvents() {
         }
     });
 }
-
+document.addEventListener('DOMContentLoaded', () => {
+    const highScore = localStorage.getItem('2048-highScore') || 0;
+    document.querySelector('.game-grid .game-item:nth-child(2) p').textContent = `High Score: ${highScore}`;
+});
 // Initialize everything when DOM is loaded
 document.addEventListener('DOMContentLoaded', initializeEvents);

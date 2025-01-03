@@ -31,7 +31,45 @@ body {
     font-size: 25px;
     font-weight: bold;
 }
+.header-container {
+    width: 100%;
+    max-width: 600px;
+    margin: 20px auto;
+}
 
+.game-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.game-title {
+    font-size: 80px;
+    font-weight: bold;
+    color: #776e65;
+}
+
+.score-container {
+    display: flex;
+    gap: 5px;
+}
+
+.title-text {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.main-title {
+    font-size: 24px;
+    color: #776e65;
+    margin-bottom: 10px;
+}
+
+.sub-title {
+    font-size: 18px;
+    color: #776e65;
+}
 .grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -64,8 +102,8 @@ body {
 .cell[data-value="128"] { background-color: #edcf72; color: #f9f6f2; font-size: 30px; }
 .cell[data-value="256"] { background-color: #edcc61; color: #f9f6f2; font-size: 30px; }
 .cell[data-value="512"] { background-color: #edc850; color: #f9f6f2; font-size: 30px; }
-.cell[data-value="1024"] { background-color: #edc53f; color: #f9f6f2; font-size: 24px; }
-.cell[data-value="2048"] { background-color: #edc22e; color: #f9f6f2; font-size: 24px; }
+.cell[data-value="1024"] { background-color: #eda43f; color: #f9f6f2; font-size: 24px; }
+.cell[data-value="2048"] { background-color: #ebb607; color: #f9f6f2; font-size: 24px; }
 
 .new-game {
     margin: 20px;
@@ -99,6 +137,22 @@ body {
     font-size: 50px;
     font-weight: bold;
     color: #776e65;
+
+}.you-won {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgb(255, 232, 103, 0.73);
+    display: flex;
+    justify-content: normal; /* מיקום אופקי במרכז */
+    align-items: center; /* מיקום אנכי במרכז */
+    flex-direction: column; /* סידור אנכי של ילדים */
+   justify-content: flex-end;
+    font-size: 50px;
+    font-weight: bold;
+    color: #6b4b01;
 }
 
 

@@ -35,14 +35,14 @@
                 </a>
             </div>
             <div class="game-item">
-                <a href="games/2048.html">
+                <a href="2048.html">
                     <img src="/api/placeholder/400/300" alt="2048">
                     <div class="game-info">
                         <h3>2048</h3>
-                        <p>High Score: 2980</p>
+                        <p>High Score: ${localStorage.getItem('2048-highScore') || 0}</p>
                     </div>
                 </a>
-            </div>
+            </div>>
             <div class="game-item, inDeveloping">
                 <a href="games/adventure.html">
                     <img src="/api/placeholder/400/300" alt="Adventure Quest">
@@ -66,7 +66,7 @@
                     <img src="/api/placeholder/400/300" alt="Adventure Quest">
                     <div class="game-info">
                         <h3>Adventure Quest</h3>
-                        <p>High Score: 350</p>
+                        <p>High Score: 0</p>
                     </div>
                 </a>
             </div>
