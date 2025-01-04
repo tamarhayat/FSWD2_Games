@@ -10,8 +10,14 @@
     <div id="game">
         <h1>טטריס</h1>
         <div id="grid"></div>
-        <div id="score">Score: 0</div>
+        <div>Score: <span id="score">0</span></div>
     </div>
+    <div id="end-message">
+        <p>שיחקת יפה!!</p>
+        <p>צברת <span id="currentScore">?</span> נקודות</p>
+        <button onclick="startGame()">שחק שוב</button>
+    </div>
+
     <script src="../src/tetris.js"></script>
 </body>
 </html>
