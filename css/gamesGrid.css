@@ -44,20 +44,19 @@ nav {
 }
 
 .hero {
-    height: 60vh;
+    height: 50vh;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
   background-size: cover;
     background-position: center;
-    background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR0E-to5EHMGdsOYtWf2sGkWO7UguQjy5rfGA&s")
-   }
+    background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ9dtdvk5cVILdZZnKJ8Qv8iAmy1RwlN7WPNg&s")   }
 
 .hero-content h1 {
     font-size: 48px;
     margin-bottom: 20px;
-    color: #060a00;
+    color: #fefefe;
     font-family:'Sixtyfour', sans-serif;
     font-weight: bold;
     text-transform: uppercase; /* כל האותיות גדולות */
@@ -91,7 +90,14 @@ nav {
     padding: 20px;
 }
 
-.game-item {
+.game-item a{
+    text-decoration: none;
+}
+.game-item h3{
+    font-weight: bold;
+    text-align: center;
+}
+    .game-item {
     background: #2a2a2a;
     border-radius: 10px;
     overflow: hidden;
@@ -102,12 +108,12 @@ nav {
     transform: translateY(-5px);
 }
 
-.game-item img {
+.game-item img, .inDeveloping img {
 
-        width: 100px; /* רוחב התמונה */
-        height: 150px; /* גובה התמונה */
-
+    width: 100%;
+    height: 200px;
     object-fit: cover;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .game-info {
@@ -126,11 +132,46 @@ nav {
     position: fixed;
     top: 20px;
     right: 40px;
-    background: rgba(255, 255, 255, 0.1);
+    background: rgb(255, 186, 106);
     padding: 10px 20px;
     border-radius: 20px;
     z-index: 1001;
 }
+
+.inDeveloping {
+    position: relative;
+    cursor: not-allowed;
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+.inDeveloping::before {
+    content: "Coming Soon";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1.2em;
+    z-index: 2;
+}
+
+.inDeveloping::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: 1;
+}
+
+
+
 
 @media (max-width: 900px) {
     .game-grid {
