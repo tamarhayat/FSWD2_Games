@@ -1,12 +1,12 @@
 // Game state management
 const gameState = {
     games: [
-        { id: 1, name: 'Adventure Quest', currentScore: 0, highScore: 350, lastPlayed: null },
-        { id: 2, name: 'Space Shooter', currentScore: 0, highScore: 280, lastPlayed: null },
-        { id: 3, name: 'Puzzle Master', currentScore: 0, highScore: 420, lastPlayed: null },
-        { id: 4, name: 'Racing Pro', currentScore: 0, highScore: 890, lastPlayed: null },
-        { id: 5, name: 'Strategy Wars', currentScore: 0, highScore: 670, lastPlayed: null },
-        { id: 6, name: 'Memory Match', currentScore: 0, highScore: 540, lastPlayed: null }
+        { id: 1, name: 'Adventure Quest', highScore: 350, lastPlayed: null },
+        { id: 2, name: '2048', highScore: 0, lastPlayed: null },
+        { id: 3, name: 'Space Shooter',  highScore: 0, lastPlayed: null },
+        { id: 4, name: 'Racing',  highScore: 0, lastPlayed: null },
+        { id: 5, name: 'Strategy Wars',  highScore: 0, lastPlayed: null },
+        { id: 6, name: 'Memory Match',  highScore: 0, lastPlayed: null } 
     ],
     scoreHistory: [],
     lastUpdate: new Date()
@@ -20,6 +20,7 @@ function calculateTotalScore() {
 // Update score display
 function updateScoreDisplay() {
     const totalScore = calculateTotalScore();
+    //dom
     document.getElementById('score').textContent = totalScore.toLocaleString();
     
     // Add to score history
@@ -98,6 +99,9 @@ function initializeEvents() {
         }
     });
 }
-
+document.addEventListener('DOMContentLoaded', () => {
+    const highScore = localStorage.getItem('2048-highScore') || 0;
+    document.querySelector('.game-grid .game-item:nth-child(2) p').textContent = `High Score: ${highScore}`;
+});
 // Initialize everything when DOM is loaded
 document.addEventListener('DOMContentLoaded', initializeEvents);
