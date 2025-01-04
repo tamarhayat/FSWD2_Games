@@ -71,6 +71,21 @@ body {
     cursor: pointer;
 }
 
+#start-message{
+    padding: 10px;
+    z-index: 7;
+    position: absolute;
+    bottom: 30vh;
+    right: 30vw;
+    background-color: rgba(76, 94, 113, 0.788);
+    height: 35vh;
+    width: 35vw;
+    display:flex;
+    flex-direction: column;
+    justify-content: space-around;
+    border-radius: 10px;
+}
+
 #popup-text{
     display: none;
     position: absolute;

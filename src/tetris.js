@@ -1,5 +1,7 @@
 const grid = document.getElementById('grid');
 const scoreDisplay=document.getElementById('score');
+document.getElementById('end-message').style.display='none';
+
 const columnSize = 13;
 const rowSize = 17;
 let score=0;
@@ -62,9 +64,11 @@ const shapes = [
 
 let currentShape;
 let currentInterval;
-const Interval = 800;
+let Interval;
 
-function startGame() {
+function startGame(interval=Interval) {
+    document.getElementById('start-message').style.display='none';
+    Interval=interval;
     clearBoard();
     document.addEventListener('keydown',handleKeyDownEvent);
     document.getElementById('end-message').style.display='none';
@@ -236,12 +240,13 @@ function handleKeyDownEvent(event){
         draw();
     }
 }
-function getRandomColorRGB() {
+
+/*function getRandomColorRGB() {
     const r = Math.floor(Math.random() * 256);
     const g = Math.floor(Math.random() * 256); 
     const b = Math.floor(Math.random() * 256); 
     return `rgb(${r}, ${g}, ${b})`;
-}
+}*/
 
 isEnd= () => {
     for(let i=0;i<columnSize;i++)
@@ -265,5 +270,3 @@ function showPopup(message) {
         popup.style.display = "none";
     }, 1000);
 }
-// Start the game
-startGame();
