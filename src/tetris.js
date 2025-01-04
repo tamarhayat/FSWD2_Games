@@ -98,6 +98,7 @@ function addShapeToBoard() {
     shape.forEach(index => {
         cells[index].classList.add('shapeBoard');
     });
+    deleteFullRows();
     if(!isEnd()){
         score++;
         scoreDisplay.textContent=score;
@@ -156,6 +157,12 @@ function isValidDraw(key) {
                 return false;
             }
         }
+    else if(key === 'ArrowUp'){
+        for(let index of shape)
+            if((index+1) % columnSize === 0 || (index) % columnSize === 0 || 
+                cells[index+1].className==='shapeBoard' || cells[index].className==='shapeBoard')
+                return false;
+    }
     return true;
 }
 
@@ -165,6 +172,48 @@ function clearBoard() {
             cell.classList.remove('shapeBoard');
         }
     });
+}
+
+function deleteFullRows(){
+    for(let i=0;i<cells.length;i+=columnSize){
+        let flag=true;  
+        for(let j=i;j<columnSize+i;j++){
+            if(!cells[j].classList.contains('shapeBoard'))
+                {
+                    flag=false;
+                    break;
+                }
+        }
+        if(flag){
+            delRow(i);
+        }
+    }
+}
+function delRow(startIndex) {
+    //dell the full row
+    for (let j = startIndex; j < startIndex + columnSize; j++) {
+        cells[j].classList.remove('shapeBoard');
+    }
+
+    //copy all the above rows, to one row down
+    for (let i = startIndex - columnSize; i >= 0; i -= columnSize) {
+        for (let j = 0; j < columnSize; j++) {
+            const currentIndex = i + j;
+            const belowIndex = currentIndex + columnSize;
+            if (cells[currentIndex].classList.contains('shapeBoard')) {
+                cells[belowIndex].classList.add('shapeBoard');
+                cells[currentIndex].classList.remove('shapeBoard');
+            } else {
+                cells[belowIndex].classList.remove('shapeBoard');
+            }
+        }
+    }
+    // del the first row
+    for (let j = 0; j < columnSize; j++) {
+        cells[j].classList.remove('shapeBoard');
+    }
+    showPopup("+5");
+    score+=5;
 }
 
     
@@ -187,6 +236,12 @@ function handleKeyDownEvent(event){
         draw();
     }
 }
+function getRandomColorRGB() {
+    const r = Math.floor(Math.random() * 256);
+    const g = Math.floor(Math.random() * 256); 
+    const b = Math.floor(Math.random() * 256); 
+    return `rgb(${r}, ${g}, ${b})`;
+}
 
 isEnd= () => {
     for(let i=0;i<columnSize;i++)
@@ -200,6 +255,15 @@ endGame =()=>{
     document.getElementById('end-message').style.display='block';
     const scoreElement = document.querySelector("#currentScore"); 
     scoreElement.textContent = score;
+}
+function showPopup(message) {
+    const popup = document.getElementById("popup-text");
+    popup.textContent = message; 
+    popup.style.display = "block"; 
+
+    setTimeout(() => {
+        popup.style.display = "none";
+    }, 1000);
 }
 // Start the game
 startGame();

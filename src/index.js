@@ -45,7 +45,8 @@ regform.addEventListener("submit", (event) => {
     
     alert("הפרטים נשמרו בהצלחה!");
     resetRegForm();
-    goBack(); //temporary
+    localStorage.setItem('currentUser', username);
+    window.location.href="html/games.html";
 
 });
 
@@ -54,9 +55,10 @@ connectform.addEventListener("submit", (event) => {
     const usernameField=document.getElementById("loginUsername");
     const passwordField= document.getElementById("loginPassword");
     if(verifyUser(usernameField.value,passwordField.value)){
-        alert("התחברת בהצלחה!!")
+        localStorage.setItem('currentUser', usernameField.value);
         resetConForm();
-        goBack(); //temporary
+        window.location.href="html/games.html";
+
     }
     else{
         alert(" שם משתמש או הסיסמה אינם נכונים, נסה שוב")
@@ -69,11 +71,13 @@ connectform.addEventListener("submit", (event) => {
 
 
 function verifyUser(username,password){
+    console.log(username);
+    console.log(password);
     let users = JSON.parse(localStorage.getItem("usersDetails")) || null
     if(!users){
         return false;
     }
-    for(user in users){
+    for(let user of users){
         if(user.username===username&&user.password===password)
             return true;
     }
