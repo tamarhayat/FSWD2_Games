@@ -1,7 +1,3 @@
-let allUsers=JSON.parse(localStorage.getItem("usersDetails"));
-const currentUser= localStorage.getItem("currentUser");
-let highScore = allUsers.find(user => user.username === currentUser)?.games[1];
-let totalScore = allUsers.find(user => user.username === currentUser)?.totalScore;
 // Game state management
 const gameState = {
     games: [
@@ -23,9 +19,9 @@ function calculateTotalScore() {
 
 // Update score display
 function updateScoreDisplay() {
-    //tamarr const totalScore = calculateTotalScore();
+    const totalScore = calculateTotalScore();
     //dom
-    document.getElementById('score').textContent = totalScore;//.toLocaleString();
+    document.getElementById('score').textContent = totalScore.toLocaleString();
     
     // Add to score history
     const scoreEntry = {
@@ -104,8 +100,7 @@ function initializeEvents() {
     });
 }
 document.addEventListener('DOMContentLoaded', () => {
-    
-    //tamarr const highScore = localStorage.getItem('2048-highScore') || 0;
+    const highScore = localStorage.getItem('2048-highScore') || 0;
     document.querySelector('.game-grid .game-item:nth-child(2) p').textContent = `High Score: ${highScore}`;
 });
 // Initialize everything when DOM is loaded
