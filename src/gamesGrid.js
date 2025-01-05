@@ -16,27 +16,27 @@ const gameState = {
 function calculateTotalScore() {
     return gameState.games.reduce((total, game) => total + game.highScore, 0);
 }
-
-// Update score display
 function updateScoreDisplay() {
     const totalScore = calculateTotalScore();
-    //dom
-    document.getElementById('score').textContent = totalScore.toLocaleString();
     
-    // Add to score history
+    // עדכון הקומפוננטה של React
+    const root = ReactDOM.createRoot(document.getElementById('scoreContainer'));
+    root.render(React.createElement(ScoreDisplay, { currentScore: totalScore }));
+    
+    // עדכון היסטוריית הניקוד
     const scoreEntry = {
         score: totalScore,
         timestamp: new Date()
     };
     gameState.scoreHistory.unshift(scoreEntry);
     
-    // Keep only last 5 entries
     if (gameState.scoreHistory.length > 5) {
         gameState.scoreHistory.pop();
     }
     
     updateScoreHistory();
 }
+
 
 // Format date for display
 function formatDateTime(date) {
