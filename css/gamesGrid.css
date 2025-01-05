@@ -59,10 +59,17 @@ nav {
     color: #fefefe;
     font-family:'Sixtyfour', sans-serif;
     font-weight: bold;
-    text-transform: uppercase; /* כל האותיות גדולות */
+    text-transform: uppercase; 
     font-size: 2rem;
     margin: 0;
     padding: 0;
+    text-shadow:
+    0 0 5px black, 
+    0 0 10px black, 
+    0 0 20px black, 
+    0 0 30px black, 
+    0 0 40px black, 
+    0 0 50px black;
 }
 
 .scroll-text {

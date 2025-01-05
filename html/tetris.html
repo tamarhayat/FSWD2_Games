@@ -16,12 +16,17 @@
     <div id="game">
         <h1>טטריס</h1>
         <div id="grid"></div>
-        <div id="scoreT">Score: <span id="score">0</span></div>
+        <div class="score-container">
+            <div id="scoreT">SCORE: <span id="score">0</span></div>
+            <div id="HighScoreT">BEST: <span id="highScore">0</span></div>
+        </div>
     </div>
     <div id="end-message">
         <p>Good Job!!</p>
         <p>צברת <span id="currentScore">?</span> נקודות</p>
-        <button onclick="startGame()">שחק שוב</button>
+        <button onclick="startGame()">New Game</button>
+        <button onclick="window.location.href='games.html'">Back to Main Menu</button>
+
     </div>
     <div id="popup-text">+5</div>
     <script src="../src/tetris.js"></script>

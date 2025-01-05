@@ -1,6 +1,10 @@
 const grid = document.getElementById('grid');
 const scoreDisplay=document.getElementById('score');
+const highScoreDisplay=document.getElementById('highScore');
+
+document.getElementById('game').style.opacity=0.1;
 document.getElementById('end-message').style.display='none';
+
 let allUsers=JSON.parse(localStorage.getItem("usersDetails"));
 const currentUser= localStorage.getItem("currentUser");
 let highScore = allUsers.find(user => user.username === currentUser)?.games[0];
@@ -71,10 +75,9 @@ let currentInterval;
 let Interval;
 
 function startGame(interval=Interval) {
-    console.log(highScore);
-    console.log(totalScore);
-
+    document.getElementById('game').style.opacity=1;
     scoreDisplay.textContent=score;
+    highScoreDisplay.textContent=highScore;
     document.getElementById('start-message').style.display='none';
     Interval=interval;
     clearBoard();
@@ -263,12 +266,7 @@ function handleKeyDownEvent(event){
     }
 }
 
-/*function getRandomColorRGB() {
-    const r = Math.floor(Math.random() * 256);
-    const g = Math.floor(Math.random() * 256); 
-    const b = Math.floor(Math.random() * 256); 
-    return `rgb(${r}, ${g}, ${b})`;
-}*/
+
 
 isEnd= () => {
     for(let i=0;i<columnSize;i++)
@@ -280,6 +278,7 @@ isEnd= () => {
 endGame =()=>{
     document.removeEventListener('keydown',handleKeyDownEvent);
     document.getElementById('end-message').style.display='block';
+    document.getElementById('game').style.opacity=0.1;
     const scoreElement = document.querySelector("#currentScore"); 
     scoreElement.textContent = score;
     totalScore+=score; //add to total
