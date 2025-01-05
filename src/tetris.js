@@ -67,6 +67,7 @@ let currentInterval;
 let Interval;
 
 function startGame(interval=Interval) {
+    scoreDisplay.textContent=score;
     document.getElementById('start-message').style.display='none';
     Interval=interval;
     clearBoard();
@@ -265,6 +266,11 @@ endGame =()=>{
     document.getElementById('end-message').style.display='block';
     const scoreElement = document.querySelector("#currentScore"); 
     scoreElement.textContent = score;
+
+    //if it is high record save it as high record!!!!!!!
+
+    score=0;
+
 }
 function showPopup(message) {
     const popup = document.getElementById("popup-text");
