@@ -1,6 +1,10 @@
 const grid = document.getElementById('grid');
 const scoreDisplay=document.getElementById('score');
 document.getElementById('end-message').style.display='none';
+let allUsers=JSON.parse(localStorage.getItem("usersDetails"));
+const currentUser= localStorage.getItem("currentUser");
+let highScore = allUsers.find(user => user.username === currentUser)?.games[1];
+let totalScore = allUsers.find(user => user.username === currentUser)?.totalScore;
 
 const columnSize = 13;
 const rowSize = 17;
@@ -67,6 +71,9 @@ let currentInterval;
 let Interval;
 
 function startGame(interval=Interval) {
+    console.log(highScore);
+    console.log(totalScore);
+
     scoreDisplay.textContent=score;
     document.getElementById('start-message').style.display='none';
     Interval=interval;
@@ -169,7 +176,7 @@ function isValidDraw(key) {
             if(cells[index].className==='shapeBoard')
                 {
                     console.log("hi");
-                return false;
+                    return false;
                 }
     }
     return true;
@@ -275,11 +282,16 @@ endGame =()=>{
     document.getElementById('end-message').style.display='block';
     const scoreElement = document.querySelector("#currentScore"); 
     scoreElement.textContent = score;
-
-    //if it is high record save it as high record!!!!!!!
-
+    totalScore+=score; //add to total
+    allUsers.find(user => user.username === currentUser).totalScore=totalScore;
+    if(score>highScore)  //if the high Score got break
+        {
+            highScore=score;
+            allUsers.find(user => user.username === currentUser).games[1]=highScore;
+        }
     score=0;
-
+    localStorage.setItem("usersDetails", JSON.stringify(allUsers)); //save the details
+    
 }
 function showPopup(message) {
     const popup = document.getElementById("popup-text");

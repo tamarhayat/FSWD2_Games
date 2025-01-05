@@ -33,7 +33,9 @@ regform.addEventListener("submit", (event) => {
         lastname: lastname,
         email: email,
         username: username,
-        password: password
+        password: password,
+        games: [0,0], //tetris is 0 and 2048 in in 1
+        totalScore:+0
     };
     //get all the users from the local storage
     let users = JSON.parse(localStorage.getItem("usersDetails")) || [];

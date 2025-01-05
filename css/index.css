@@ -40,9 +40,14 @@ h1 {
     font-weight: bold;
     font-size: 2rem;
     text-align: center;
-    color: white;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-}
+    color: black;
+    text-shadow: 
+    0 0 5px white, 
+    0 0 10px white, 
+    0 0 20px white, 
+    0 0 30px white, 
+    0 0 40px white, 
+    0 0 50px white;}
 
 .btn-container {
     display: flex;

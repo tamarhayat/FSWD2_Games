@@ -1,7 +1,12 @@
 
 let grid = [];
 let score = 0;
-let highScore = localStorage.getItem('2048-highScore') || 0;
+let allUsers=JSON.parse(localStorage.getItem("usersDetails"));
+const currentUser= localStorage.getItem("currentUser");
+let highScore = allUsers.find(user => user.username === currentUser)?.games[1];
+let totalScore = allUsers.find(user => user.username === currentUser)?.totalScore;
+
+//tamarr let highScore = localStorage.getItem('2048-highScore') || 0;
 const gridSize = 4;
 win= false;
 
@@ -9,8 +14,10 @@ document.getElementById('highScore').textContent = highScore;
 function updateHighScore() {
     if (score > highScore) {
         highScore = score;
-        localStorage.setItem('2048-highScore', highScore);
-        
+        allUsers.find(user => user.username === currentUser).games[1]=highScore;
+        document.getElementById('highScore').textContent = highScore;
+        localStorage.setItem("usersDetails", JSON.stringify(allUsers)); //save the details
+                
         // Update game state
         const game2048 = gameState.games.find(g => g.name === '2048');
         if (game2048) {
