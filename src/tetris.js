@@ -57,7 +57,7 @@ const shapes = [
     [
         [0, columnSize, 2 * columnSize, columnSize + 1], // T shape original
         [0, 1, 2, columnSize + 1], // T shape rotated 90 degrees
-        [2, columnSize +2, columnSize + 1, 2 * columnSize+2], // T shape rotated 180 degrees
+        [1, columnSize +1, columnSize, 2 * columnSize+1], // T shape rotated 180 degrees
         [1, columnSize, columnSize + 1, columnSize + 2] // T shape rotated 270 degrees
     ]
 ];
@@ -159,13 +159,16 @@ function isValidDraw(key) {
         for(let index of shape){
             if(Math.floor(index/columnSize) === rowSize - 1 || cells[index+columnSize].className==='shapeBoard')
                 return false;
-            }
         }
+    }
     else if(key === 'ArrowUp'){
-        for(let index of shape)
-            if((index+1) % columnSize === 0 || (index) % columnSize === 0 || 
-                cells[index+1].className==='shapeBoard' || cells[index].className==='shapeBoard')
-                return false;
+        let temp=new Shape(currentShape.x,(currentShape.y+1)%4,currentShape.col,currentShape.row);
+        let tempArr=temp.getCurrentShape(); //get the shape if it will turn
+        delete temp;
+        tempArr=tempArr.map(index=>index%columnSize);
+        const max = Math.max(...tempArr); // the max
+        const min = Math.min(...tempArr); // the min
+        return max - min <= 4; //check if it jump to the next row
     }
     return true;
 }
@@ -236,6 +239,8 @@ function handleKeyDownEvent(event){
     }
     else if(key==='ArrowUp'){
         undraw();
+        while(!isValidDraw(key))
+                currentShape.col--;
         turnShape();
         draw();
     }
