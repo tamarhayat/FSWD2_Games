@@ -87,20 +87,22 @@ function verifyUser(username,password){
 }
 
 function showRegister() {
-    document.querySelector('.main-container h1').style.display='none';
+    document.querySelector('h1').style.display='none';
     document.querySelector('.btn-container').style.display='none';
     document.getElementById('register-container').style.display = 'block';
 }
 
 function showConnect() {
-    document.querySelector('.main-container h1').style.display='none';
+    document.querySelector('h1').style.display='none';
     document.querySelector('.btn-container').style.display='none';
     document.getElementById('connect-container').style.display = 'block';
 }
 
 function goBack() {
-    document.querySelector('.main-container h1').style.display='block';
-    document.querySelector('.btn-container').style.display='block';
+    resetRegForm();
+    resetConForm();
+    document.querySelector('h1').style.display='block';
+    document.querySelector('.btn-container').style.display='flex';
     document.getElementById('register-container').style.display = 'none';
     document.getElementById('connect-container').style.display = 'none';
 }
