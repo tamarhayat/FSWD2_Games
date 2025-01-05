@@ -16,8 +16,7 @@ function updateHighScore() {
         highScore = score;
         allUsers.find(user => user.username === currentUser).games[1]=highScore;
         document.getElementById('highScore').textContent = highScore;
-        localStorage.setItem("usersDetails", JSON.stringify(allUsers)); //save the details
-                
+
         // Update game state
         const game2048 = gameState.games.find(g => g.name === '2048');
         if (game2048) {
@@ -26,6 +25,8 @@ function updateHighScore() {
             updateScoreDisplay();
         }
     }
+    localStorage.setItem("usersDetails", JSON.stringify(allUsers)); //save the details
+
 }
 
 function initGrid() {
@@ -161,6 +162,11 @@ function checkGameOver() {
     }
     
     document.getElementById('gameOver').style.display = 'flex';
+    totalScore+=score;
+    allUsers.find(user => user.username === currentUser).totalScore =totalScore;
+    localStorage.setItem("usersDetails", JSON.stringify(allUsers)); //save the details
+
+
     return true;
 }
 //when gets 2048

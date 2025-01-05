@@ -3,7 +3,7 @@ const scoreDisplay=document.getElementById('score');
 document.getElementById('end-message').style.display='none';
 let allUsers=JSON.parse(localStorage.getItem("usersDetails"));
 const currentUser= localStorage.getItem("currentUser");
-let highScore = allUsers.find(user => user.username === currentUser)?.games[1];
+let highScore = allUsers.find(user => user.username === currentUser)?.games[0];
 let totalScore = allUsers.find(user => user.username === currentUser)?.totalScore;
 
 const columnSize = 13;
@@ -287,7 +287,7 @@ endGame =()=>{
     if(score>highScore)  //if the high Score got break
         {
             highScore=score;
-            allUsers.find(user => user.username === currentUser).games[1]=highScore;
+            allUsers.find(user => user.username === currentUser).games[0]=highScore;
         }
     score=0;
     localStorage.setItem("usersDetails", JSON.stringify(allUsers)); //save the details

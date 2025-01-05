@@ -1,7 +1,13 @@
+let allUsers=JSON.parse(localStorage.getItem("usersDetails"));
+const currentUser= localStorage.getItem("currentUser");
+let highScore2048 = allUsers.find(user => user.username === currentUser)?.games[1];
+let highScoreTetris = allUsers.find(user => user.username === currentUser)?.games[0];
+
+let totalScore = allUsers.find(user => user.username === currentUser)?.totalScore;
 // Game state management
 const gameState = {
     games: [
-        { id: 1, name: 'Adventure Quest', highScore: 350, lastPlayed: null },
+        { id: 1, name: 'Adventure Quest', highScore: 0, lastPlayed: null },
         { id: 2, name: '2048', highScore: 0, lastPlayed: null },
         { id: 3, name: 'Space Shooter',  highScore: 0, lastPlayed: null },
         { id: 4, name: 'Racing',  highScore: 0, lastPlayed: null },
@@ -19,9 +25,10 @@ function calculateTotalScore() {
 
 // Update score display
 function updateScoreDisplay() {
-    const totalScore = calculateTotalScore();
+    //const totalScore = calculateTotalScore();
+
     //dom
-    document.getElementById('score').textContent = totalScore.toLocaleString();
+    document.getElementById('score').textContent = totalScore;
     
     // Add to score history
     const scoreEntry = {
@@ -100,7 +107,7 @@ function initializeEvents() {
     });
 }
 document.addEventListener('DOMContentLoaded', () => {
-    const highScore = localStorage.getItem('2048-highScore') || 0;
+    //const highScore = localStorage.getItem('2048-highScore') || 0;
     document.querySelector('.game-grid .game-item:nth-child(2) p').textContent = `High Score: ${highScore}`;
 });
 // Initialize everything when DOM is loaded
