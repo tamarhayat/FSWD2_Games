@@ -12,12 +12,12 @@ regform.addEventListener("submit", (event) => {
         confirmPasswordField.value = "";
         passwordField.style.border = "2px solid red";
         confirmPasswordField.style.border = "2px solid red";
-        alert("אימות הסיסמה אינו זהה לסיסמה שהזנת, נסה שוב");
+        alert("Password verification does not match the password you entered, please try again");
 
         return;
     }
     if(!document.getElementById("terms").checked){
-        alert("אשר בבקשה את פרטי השימוש ");  
+        alert("Please confirm the usage details.");  
         return;  
     }
     
@@ -61,7 +61,7 @@ connectform.addEventListener("submit", (event) => {
 
     }
     else{
-        alert(" שם משתמש או הסיסמה אינם נכונים, נסה שוב")
+        alert("The username or password is incorrect, please try again.")
         resetConForm();
         passwordField.style.border = "2px solid red";
         usernameField.style.border = "2px solid red";
