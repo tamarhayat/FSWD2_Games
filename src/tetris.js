@@ -161,15 +161,14 @@ function isValidDraw(key) {
             if(Math.floor(index/columnSize) === rowSize - 1 || cells[index+columnSize].className==='shapeBoard')
                 return false;
         }
-    }
-    else if(key === 'ArrowUp'){
+    } else if(key === 'ArrowUp'){
         let temp=new Shape(currentShape.x,(currentShape.y+1)%4,currentShape.col,currentShape.row);
         let tempArr=temp.getCurrentShape(); //get the shape if it will turn
         delete temp;
-        tempArr=tempArr.map(index=>index%columnSize);
-        const max = Math.max(...tempArr); // the max
-        const min = Math.min(...tempArr); // the min
-        return max - min <= 4; //check if it jump to the next row
+        for(let index of tempArr)
+            if(cells[index].className('shapeBoard'))
+                console.log("hi");
+                return false;
     }
     return true;
 }
@@ -223,7 +222,15 @@ function delRow(startIndex) {
     showPopup("+5");
     score+=5;
 }
-
+function isGoodTurn(){
+    let temp=new Shape(currentShape.x,(currentShape.y+1)%4,currentShape.col,currentShape.row);
+    let tempArr=temp.getCurrentShape(); //get the shape if it will turn
+    delete temp;
+    tempArr=tempArr.map(index=>index%columnSize);
+    const max = Math.max(...tempArr); // the max
+    const min = Math.min(...tempArr); // the min
+    return max - min <= 4; //check if it jump to the next row
+}
     
 function handleKeyDownEvent(event){
     const key = event.key;
@@ -238,9 +245,9 @@ function handleKeyDownEvent(event){
     } else if (key === 'ArrowDown' && isValidDraw(key)) {
         getDown();
     }
-    else if(key==='ArrowUp'){
+    else if(key==='ArrowUp' && isValidDraw(key)){
         undraw();
-        while(!isValidDraw(key))
+        while(!isGoodTurn())
                 currentShape.col--;
         turnShape();
         draw();
