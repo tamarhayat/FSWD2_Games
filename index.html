@@ -9,34 +9,34 @@
 </head>
 <body>
     <div class="main-container">
-        <h1>ברוכים הבאים לאתר המשחקים הכי שווה בעולם שאנחנו יצרנו</h1>
+        <h1>Welcome to Game4U all your favorite games in one place!</h1>
         <div class="btn-container">
-            <button class="connect" onclick="showConnect()">התחבר</button>
-            <button class="register" onclick="showRegister()">הרשם</button>
+            <button class="connect" onclick="showConnect()">login</button>
+            <button class="register" onclick="showRegister()">submit</button>
         </div>
         <div class="form-container" id="register-container">
             <button class="close-button" onclick="goBack()">&times;</button>
             <form id="registerForm">
-                <input type="text" id="firstName" name="firstName" placeholder="שם פרטי"><br>
-                <input type="text" id="lastName" name="lastName" placeholder="שם משפחה"><br>
-                <input type="email" id="email" name="email" placeholder="כתובת מייל"><br>
-                <input type="text" id="username" name="username" placeholder="בחר שם משתמש משלך"><br>
-                <input type="password" id="password" name="password" placeholder="בחר סיסמה"><br>
-                <input type="password" id="confirmPassword" name="confirmPassword" placeholder="אמת את הסיסמה"><br>
+                <input type="text" id="firstName" name="firstName" placeholder="First name"><br>
+                <input type="text" id="lastName" name="lastName" placeholder="Last name"><br>
+                <input type="email" id="email" name="email" placeholder="Email"><br>
+                <input type="text" id="username" name="username" placeholder="username"><br>
+                <input type="password" id="password" name="password" placeholder="Password"><br>
+                <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Password verification"><br>
                 <div class="accept">
                     <input type="checkbox" id="terms" name="terms">
-                    <label for="terms">אני מסכים לתנאי השימוש</label>
+                    <label for="terms">I agree to terms of use</label>
 
                 </div>
-                <input type="submit" class="submit" value="הרשם">
+                <input type="submit" class="submit" value="submit">
             </form>
         </div>
         <div class="form-container" id="connect-container">
             <button class="close-button" onclick="goBack()">&times;</button>
             <form id="connectForm">
-                <input type="text" id="loginUsername" name="loginUsername" placeholder="שם משתמש"><br>
-                <input type="password" id="loginPassword" name="loginPassword" placeholder="סיסמה"><br>
-                <input type="submit" class="submit" value="התחבר">
+                <input type="text" id="loginUsername" name="loginUsername" placeholder="Username"><br>
+                <input type="password" id="loginPassword" name="loginPassword" placeholder="Password"><br>
+                <input type="submit" class="submit" value="connect">
             </form>
         </div>
     </div>
