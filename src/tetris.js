@@ -166,9 +166,11 @@ function isValidDraw(key) {
         let tempArr=temp.getCurrentShape(); //get the shape if it will turn
         delete temp;
         for(let index of tempArr)
-            if(cells[index].className('shapeBoard'))
-                console.log("hi");
+            if(cells[index].className==='shapeBoard')
+                {
+                    console.log("hi");
                 return false;
+                }
     }
     return true;
 }
