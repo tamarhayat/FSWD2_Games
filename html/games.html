@@ -21,7 +21,7 @@
         </div>
     </section>
 
-    <div id="games" class="scroll-text">WHAT WILL YOU PLAY TODAY? </div>
+    <div id="games" class="scroll-text">HI <span> </span>! WHAT WILL YOU PLAY TODAY? </div>
 
     <section class="games-container">
         <div class="game-grid">
@@ -30,7 +30,7 @@
                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRVBqp93MNqOXyx4DZSvgP8bPGB_wT4C7kJt6cjtvTcm3Y9P18z8qijcBTuJkwrwPpueksVXjRSRz2NzYLtpun6RXZXs6iociyWhGJTFgj" alt="Tetris">
                     <div class="game-info">
                         <h3>Tetris</h3>
-                        <p>High Score: ${tetrisHigScore} </p>
+                        <p>High Score: <span id="tetris-best">0</span> </p>
                     </div>
                 </a>
             </div>
@@ -39,7 +39,7 @@
                     <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/2048_logo.svg/1200px-2048_logo.svg.png" alt="2048">
                     <div class="game-info">
                         <h3>2048</h3>
-                        <p>High Score: ${localStorage.getItem('2048-highScore') || 0}</p>
+                        <p>High Score: <span id="2048-best">0</span></p>
                     </div>
                 </a>
             </div>
@@ -48,7 +48,7 @@
                     <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTjSYTUaSDTvC60-PyZf3At0HwRglMtT0ttK8HjJqbzkRDypCu7ngDTJK4UwuYFn4wEpkUDRbApkvBI10UwU-rGVG_OkdXLbeyC9S03vMe0" alt="Space Shooter">
                     <div class="game-info">
                         <h3>Space Shooter</h3>
-                        <p>High Score: ${localStorage.getItem('SpaceShooter-highScore') || 0}</p>
+                        <p>High Score:<span id="SpaceShooter-best">0</span></p>
                     </div>
                 </a>
             </div>
@@ -57,7 +57,7 @@
                     <img src="https://images.crazygames.com/xtreme-rivals-car-racing_16x9/20240509070904/xtreme-rivals-car-racing_16x9-cover?auto=format,compress&q=75&cs=strip" alt="Racing">
                     <div class="game-info">
                         <h3>Racing</h3>
-                        <p>High Score: ${localStorage.getItem('Racing-highScore') || 0}</p>
+                        <p>High Score:<span id="Racing-best">0</span></p>
                     </div>
                 </a>
             </div>
@@ -66,7 +66,7 @@
                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSWmtUhJF--KpeMVdNmNu04vP1zJvFBL2cWI6-Z5lpiXcJvLFNmT81CfGo&s" alt="Strategy Wars">
                     <div class="game-info">
                         <h3>Strategy Wars</h3>
-                        <p>High Score: ${localStorage.getItem('StrategyWars-highScore') || 0}</p>
+                        <p>High Score: <span id="StrategyWars-best">0</span></p>
                     </div>
                 </a>
             </div>
@@ -75,7 +75,7 @@
                     <img src="https://store-images.s-microsoft.com/image/apps.54588.14090654178473619.aa2706f7-9244-4d37-b59f-3f87f7589476.6a5a6db1-70ba-4b57-a879-7f9264cd3a40?mode=scale&q=90&h=1080&w=1920" alt="Memory Match">
                     <div class="game-info">
                         <h3>Memory Match</h3>
-                        <p>High Score:  ${localStorage.getItem('Match-highScore') || 0}</p>
+                        <p>High Score:  <span id="MemoryMatch-best">0</span></p>
                     </div>
                 </a>
             </div>
