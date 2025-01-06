@@ -2,11 +2,11 @@ let allUsers=JSON.parse(localStorage.getItem("usersDetails"));
 const currentUser= localStorage.getItem("currentUser");
 let highScore2048 = allUsers.find(user => user.username === currentUser)?.games[1];
 let highScoreTetris = allUsers.find(user => user.username === currentUser)?.games[0];
-let firstName = allUsers.find(user => user.username === currentUser)?.firstName;
+let firstName = allUsers.find(user => user.username === currentUser)?.firstname;
 
 document.getElementById("tetris-best").textContent=highScoreTetris;
 document.getElementById("2048-best").textContent=highScore2048;
-document.querySelector("#games span").textContent=firstName;
+document.getElementById("firstName").textContent=firstName;
 
 let totalScore = allUsers.find(user => user.username === currentUser)?.totalScore;
 // Game state management

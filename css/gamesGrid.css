@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Sixtyfour&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Rubik+Vinyl&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=M+PLUS+Rounded+1c&family=Playwrite+AU+SA:wght@100..400&family=Rubik:ital,wght@0,300..900;1,300..900&family=Secular+One&display=swap');
 
 * {
     margin: 0;
@@ -15,6 +16,7 @@ body {
 
 nav {
     position: fixed;
+    font-family: 'Caveat', cursive;
     top: 0;
     width: 100%;
     padding: 20px 40px;
@@ -28,8 +30,9 @@ nav {
 .logo {
     color: #ffffff;
     text-decoration: none;
-    font-size: 24px;
+    font-size: 30px;
     font-weight: bold;
+    text-shadow: 0 2px 3px white;
 }
 
 .menu {
@@ -46,7 +49,7 @@ nav {
 .hero {
     height: 50vh;
     display: flex;
-    align-items: center;
+    align-items:center;
     justify-content: center;
     text-align: center;
   background-size: cover;
@@ -54,14 +57,12 @@ nav {
     background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ9dtdvk5cVILdZZnKJ8Qv8iAmy1RwlN7WPNg&s")   }
 
 .hero-content h1 {
-    font-size: 48px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     color: #fefefe;
     font-family:'Sixtyfour', sans-serif;
     font-weight: bold;
     text-transform: uppercase; 
-    font-size: 2rem;
-    margin: 0;
+    font-size:2rem;
     padding: 0;
     text-shadow:
     0 0 5px black, 
@@ -77,7 +78,7 @@ nav {
     padding: 40px 0;
     font-size: 24px;
     opacity: 0;
-    transition: opacity 0.3s;
+    transition: opacity 0.2s;
 }
 
 .scroll-text.visible {
@@ -104,7 +105,7 @@ nav {
     font-weight: bold;
     text-align: center;
 }
-    .game-item {
+.game-item {
     background: #2a2a2a;
     border-radius: 10px;
     overflow: hidden;
