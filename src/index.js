@@ -56,7 +56,7 @@ regform.addEventListener("submit", (event) => {
     
     localStorage.setItem("usersDetails", JSON.stringify(users));
     
-    alert("הפרטים נשמרו בהצלחה!");
+    alert("Your details have been saved successfully!");
     resetRegForm();
     localStorage.setItem('currentUser', username);
     window.location.href="html/games.html";

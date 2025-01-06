@@ -3,30 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>טטריס</title>
+    <title>Tetris</title>
     <link rel="stylesheet" href="../css/tetris.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 </head>
 <body>
     <div id="start-message">
-        <p>Please select Level</p>
-        <button onclick="startGame(700)">easy</button>
-        <button onclick="startGame(450)">middle</button>
-        <button onclick="startGame(300)">hard</button>
+        <h1>Please select Level</h1>
+        <div class="levels-container">
+            <button onclick="startGame(700)">
+                <div class="level-btn">
+                    <p>easy</p>
+                    <div class="star-container">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                    </div>
+                </div>
+            </button>
+            <button onclick="startGame(450)">
+                <div class="level-btn">
+                    <p>middle</p>
+                    <div class="star-container">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                    </div>
+                </div>
+            </button>
+            <button onclick="startGame(300)">
+                <div class="level-btn">
+                    <p>hard</p>
+                    <div class="star-container">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                </div>
+            </button>
+        </div>
     </div>
     <div id="game">
-        <h1>טטריס</h1>
+        <h1>TETRIS</h1>
         <div id="grid"></div>
         <div class="score-container">
             <div id="scoreT">SCORE: <span id="score">0</span></div>
             <div id="HighScoreT">BEST: <span id="highScore">0</span></div>
         </div>
     </div>
-    <div id="end-message">
-        <p>Good Job!!</p>
-        <p>צברת <span id="currentScore">?</span> נקודות</p>
-        <button onclick="startGame()">New Game</button>
-        <button onclick="window.location.href='games.html'">Back to Main Menu</button>
-
+    <div class="game-over" id="gameOver">
+        <h1>!Great job! You scored <span id="currentScore">?</span> points</h1>
+        <div class="btn-container">
+            <button class="btn-icon" onclick="window.location.href='games.html'"><i id="home-icon" class="fa-solid fa-house"></i></button>
+            <button class="btn-icon" onclick="startGame()"><i id="again-icon" class="fa-solid fa-arrow-rotate-right"></i></button>
+        </div>
     </div>
     <div id="popup-text">+5</div>
     <script src="../src/tetris.js"></script>

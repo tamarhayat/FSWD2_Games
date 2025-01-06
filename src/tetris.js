@@ -3,7 +3,7 @@ const scoreDisplay=document.getElementById('score');
 const highScoreDisplay=document.getElementById('highScore');
 
 document.getElementById('game').style.opacity=0.1;
-document.getElementById('end-message').style.display='none';
+document.getElementById('gameOver').style.display='none';
 
 let allUsers=JSON.parse(localStorage.getItem("usersDetails"));
 const currentUser= localStorage.getItem("currentUser");
@@ -82,7 +82,7 @@ function startGame(interval=Interval) {
     Interval=interval;
     clearBoard();
     document.addEventListener('keydown',handleKeyDownEvent);
-    document.getElementById('end-message').style.display='none';
+    document.getElementById('gameOver').style.display='none';
     currentShape = getNewShape();
     draw();
     startInterval();
@@ -277,8 +277,8 @@ isEnd= () => {
 
 endGame =()=>{
     document.removeEventListener('keydown',handleKeyDownEvent);
-    document.getElementById('end-message').style.display='block';
-    document.getElementById('game').style.opacity=0.1;
+    document.getElementById('gameOver').style.display = 'flex';
+    document.getElementById('game').style.opacity=0.2;
     const scoreElement = document.querySelector("#currentScore"); 
     scoreElement.textContent = score;
     totalScore+=score; //add to total
