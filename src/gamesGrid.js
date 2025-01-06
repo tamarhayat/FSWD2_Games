@@ -3,12 +3,15 @@ const currentUser= localStorage.getItem("currentUser");
 let highScore2048 = allUsers.find(user => user.username === currentUser)?.games[1];
 let highScoreTetris = allUsers.find(user => user.username === currentUser)?.games[0];
 let firstName = allUsers.find(user => user.username === currentUser)?.firstname;
+let totalScore = allUsers.find(user => user.username === currentUser)?.totalScore;
 
+
+//get the details of the current user
 document.getElementById("tetris-best").textContent=highScoreTetris;
 document.getElementById("2048-best").textContent=highScore2048;
 document.getElementById("firstName").textContent=firstName;
+document.getElementById("score").textContent=totalScore;
 
-let totalScore = allUsers.find(user => user.username === currentUser)?.totalScore;
 // Game state management
 const gameState = {
     games: [
@@ -115,4 +118,4 @@ document.addEventListener('DOMContentLoaded', () => {
     //document.querySelector('.game-grid .game-item:nth-child(2) p').textContent = `High Score: ${highScore}`;
 });
 // Initialize everything when DOM is loaded
-document.addEventListener('DOMContentLoaded', initializeEvents);
+//document.addEventListener('DOMContentLoaded', initializeEvents);

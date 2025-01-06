@@ -5,6 +5,8 @@ let allUsers=JSON.parse(localStorage.getItem("usersDetails"));
 const currentUser= localStorage.getItem("currentUser");
 let highScore = allUsers.find(user => user.username === currentUser)?.games[1];
 let totalScore = allUsers.find(user => user.username === currentUser)?.totalScore;
+document.getElementById('gameOver').style.display = 'none';
+document.getElementById('youWon').style.display = 'none';
 
 //tamarr let highScore = localStorage.getItem('2048-highScore') || 0;
 const gridSize = 4;

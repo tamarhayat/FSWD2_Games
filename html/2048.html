@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <script src="../src/2048.js" defer></script>
     <link rel="stylesheet" href="../css/2048.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>2048</title>
 
 </head>
@@ -28,7 +29,12 @@
             </div>
         </div>
     </div>
-    <button class="new-game" onclick="newGame()">New Game</button>
+    <!--<button class="new-game" onclick="newGame()">New Game</button>-->
+    <div class="btn-container">
+        <button class="btn-icon" onclick="window.location.href='games.html'"><i id="home-icon" class="fa-solid fa-house"></i></button>
+        <button class="btn-icon" onclick="newGame()"><i id="again-icon" class="fa-solid fa-arrow-rotate-right"></i></button>
+    </div>
+
     <div class="grid" id="grid"></div>
    
 
