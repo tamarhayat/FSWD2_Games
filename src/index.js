@@ -14,7 +14,7 @@ regform.addEventListener("submit", (event) => {
     const comfirmPassword=confirmPasswordField.value;
 
     if(!firstname||!lastname||!email||!username||!password||!comfirmPassword){
-        alert("All the fields are required");
+        alert("Oops! It looks like you missed some fields\n we need all your details:)");
         return;
     }
 
@@ -67,6 +67,11 @@ connectform.addEventListener("submit", (event) => {
     event.preventDefault();
     const usernameField=document.getElementById("loginUsername");
     const passwordField= document.getElementById("loginPassword");
+    if(!passwordField.value||!usernameField.value)
+    {
+        alert("Oops! It looks like you missed some fields");
+        return;
+    }
     if(verifyUser(usernameField.value,passwordField.value)){
         localStorage.setItem('currentUser', usernameField.value);
         resetConForm();
