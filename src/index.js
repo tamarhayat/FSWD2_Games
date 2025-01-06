@@ -3,8 +3,21 @@ const connectform = document.getElementById("connectForm");
 
 regform.addEventListener("submit", (event) => {
     event.preventDefault();
+    
+    const firstname = document.getElementById("firstName").value;
+    const lastname = document.getElementById("lastName").value;
+    const email = document.getElementById("email").value;
+    const username =document.getElementById("username").value;
     const passwordField= document.getElementById("password");
+    const password =passwordField.value;
     const confirmPasswordField=document.getElementById("confirmPassword");
+    const comfirmPassword=confirmPasswordField.value;
+
+    if(!firstname||!lastname||!email||!username||!password||!comfirmPassword){
+        alert("All the fields are required");
+        return;
+    }
+
     if(passwordField.value !== confirmPasswordField.value){
 
         //do the fileds empty again
@@ -16,17 +29,15 @@ regform.addEventListener("submit", (event) => {
 
         return;
     }
+
+        
     if(!document.getElementById("terms").checked){
         alert("Please confirm the usage details.");  
         return;  
     }
-    
+
     //get the inputs
-    const firstname = document.getElementById("firstName").value;
-    const lastname = document.getElementById("lastName").value;
-    const email = document.getElementById("email").value;
-    const username =document.getElementById("username").value;
-    const password =passwordField.value;
+    
     
     const user = {   //create an object
         firstname: firstname,
@@ -73,8 +84,6 @@ connectform.addEventListener("submit", (event) => {
 
 
 function verifyUser(username,password){
-    console.log(username);
-    console.log(password);
     let users = JSON.parse(localStorage.getItem("usersDetails")) || null
     if(!users){
         return false;
