@@ -32,7 +32,7 @@ window.addEventListener('scroll', () => {
     const scrollText = document.querySelector('.scroll-text');
     const scrollPosition = window.scrollY;
     
-    if (scrollPosition > 100) {
+    if (scrollPosition > 80) {
         scrollText.classList.add('visible');
     } else {
         scrollText.classList.remove('visible');
@@ -110,7 +110,7 @@ function initializeEvents() {
     window.addEventListener('load', () => {
         updateScoreDisplay();
         // Simulate periodic score updates
-        setInterval(simulateGamePlay, 5000);
+        //setInterval(simulateGamePlay, 5000);
     });
 
     // Scroll event for "BROWSE GAMES" text
@@ -126,11 +126,11 @@ function initializeEvents() {
     });
 
     // Keyboard controls for testing
-    document.addEventListener('keypress', (e) => {
+    /*document.addEventListener('keypress', (e) => {
         if (e.key === 's') {
             simulateGamePlay();
         }
-    });
+    });*/
 }
 document.addEventListener('DOMContentLoaded', () => {
     //document.querySelector('.game-grid .game-item:nth-child(2) p').textContent = `High Score: ${highScore}`;

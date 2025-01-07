@@ -9,7 +9,6 @@ let totalScore = allUsers.find(user => user.username === currentUser)?.totalScor
 document.getElementById('gameOver').style.display = 'none';
 document.getElementById('youWon').style.display = 'none';
 
-//tamarr let highScore = localStorage.getItem('2048-highScore') || 0;
 const gridSize = 4;
 win= false;
 
@@ -213,6 +212,7 @@ document.addEventListener('keydown', (event) => {
             move('right');
             break;
     }
+    checkGameOver();
 });
 
 // Initialize game
