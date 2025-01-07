@@ -6,7 +6,8 @@ document.getElementById('game').style.opacity=0.1;
 document.getElementById('gameOver').style.display='none';
 
 let allUsers=JSON.parse(localStorage.getItem("usersDetails"));
-const currentUser= localStorage.getItem("currentUser");
+const currentUser=getCookie("username"); //use cookie
+//const currentUser= localStorage.getItem("currentUser");
 let highScore = allUsers.find(user => user.username === currentUser)?.games[0];
 let totalScore = allUsers.find(user => user.username === currentUser)?.totalScore;
 

@@ -1,5 +1,6 @@
 let allUsers=JSON.parse(localStorage.getItem("usersDetails"));
-const currentUser= localStorage.getItem("currentUser");
+//const currentUser= localStorage.getItem("currentUser");
+const currentUser=getCookie("username"); //use cookie
 let highScore2048 = allUsers.find(user => user.username === currentUser)?.games[1];
 let highScoreTetris = allUsers.find(user => user.username === currentUser)?.games[0];
 let firstName = allUsers.find(user => user.username === currentUser)?.firstname;
@@ -25,6 +26,18 @@ const gameState = {
     scoreHistory: [],
     lastUpdate: new Date()
 };
+
+        
+window.addEventListener('scroll', () => {
+    const scrollText = document.querySelector('.scroll-text');
+    const scrollPosition = window.scrollY;
+    
+    if (scrollPosition > 100) {
+        scrollText.classList.add('visible');
+    } else {
+        scrollText.classList.remove('visible');
+    }
+});
 
 // Score calculation function
 /*function calculateTotalScore() {
@@ -84,7 +97,12 @@ function CountScore() {
     history.style.display = history.style.display === 'none' ? 'block' : 'none';
 }
 
+function logout(){
+    deleteCookie("username");
+    deleteCookie("password");
+    window.location.href='../index.html'
 
+}
 
 // Initialize events
 function initializeEvents() {

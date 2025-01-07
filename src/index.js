@@ -29,15 +29,11 @@ regform.addEventListener("submit", (event) => {
 
         return;
     }
-
-        
+   
     if(!document.getElementById("terms").checked){
         alert("Please confirm the usage details.");  
         return;  
     }
-
-    //get the inputs
-    
     
     const user = {   //create an object
         firstname: firstname,
@@ -58,6 +54,8 @@ regform.addEventListener("submit", (event) => {
     
     alert("Your details have been saved successfully!");
     resetRegForm();
+    setCookie("username",username,1); //saved it for 1 day
+    setCookie("password",password,1); //saved it for 1 day
     localStorage.setItem('currentUser', username);
     window.location.href="html/games.html";
 
@@ -73,6 +71,8 @@ connectform.addEventListener("submit", (event) => {
         return;
     }
     if(verifyUser(usernameField.value,passwordField.value)){
+        setCookie("username",usernameField.value,1); //saved it for 1 day
+        setCookie("password",passwordField.value,1); //saved it for 1 day
         localStorage.setItem('currentUser', usernameField.value);
         resetConForm();
         window.location.href="html/games.html";
@@ -87,7 +87,12 @@ connectform.addEventListener("submit", (event) => {
 
 });
 
-
+function autoLogin(){
+    const username = getCookie("username");
+    const password = getCookie("password");
+    //return if there is username, and there is password, and if they matched, in the cookie
+    return username && password && verifyUser(username,password);
+}
 function verifyUser(username,password){
     let users = JSON.parse(localStorage.getItem("usersDetails")) || null
     if(!users){
@@ -107,6 +112,11 @@ function showRegister() {
 }
 
 function showConnect() {
+    if(autoLogin())  //if there is cookie
+    {
+        window.location.href="html/games.html"; 
+        return;
+    }
     document.querySelector('h1').style.display='none';
     document.querySelector('.btn-container').style.display='none';
     document.getElementById('connect-container').style.display = 'block';
@@ -133,3 +143,5 @@ function resetConForm(){
     document.getElementById("loginUsername").value = "";
     document.getElementById("loginPassword").value = "";
 }
+
+

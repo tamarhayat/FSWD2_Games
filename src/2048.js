@@ -2,7 +2,8 @@
 let grid = [];
 let score = 0;
 let allUsers=JSON.parse(localStorage.getItem("usersDetails"));
-const currentUser= localStorage.getItem("currentUser");
+const currentUser=getCookie("username"); //use cookie
+//const currentUser= localStorage.getItem("currentUser");
 let highScore = allUsers.find(user => user.username === currentUser)?.games[1];
 let totalScore = allUsers.find(user => user.username === currentUser)?.totalScore;
 document.getElementById('gameOver').style.display = 'none';

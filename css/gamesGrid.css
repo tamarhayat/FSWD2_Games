@@ -34,6 +34,15 @@ nav {
     font-weight: bold;
     text-shadow: 0 2px 3px white;
 }
+.logout{
+    all:unset;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+.logout:hover{
+    cursor: pointer;
+}
 
 .menu {
     display: flex;
@@ -138,9 +147,7 @@ nav {
 
 .score-display {
     font-size: 25px;
-    position: fixed;
-    top: 15px;
-    right: 40px;
+    margin-left: 65vw;
     background: rgb(255, 186, 106);
     padding: 10px 20px;
     border-radius: 20px;

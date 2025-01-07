@@ -4,15 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Game Zone</title>
-    <script src="../src/gamesGrid.js" defer></script>
     <link rel="stylesheet" href="../css/gamesGrid.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
     <nav>
         <a href="#" class="logo">Game4U</a>
-            <div id="scoreContainer" class="score-display" onclick="CountScore()">
-                Total Score: <span id="score">0</span>
-            </div>
+        <div id="scoreContainer" class="score-display" onclick="CountScore()">
+            Total Score: <span id="score">0</span>
+        </div>
+        <button onclick="logout()" class="logout">
+            <i class="fa-solid fa-arrow-right-from-bracket"></i>
+            <span>logout</span>
+        </button>
     </nav>
 
     <section class="hero">
@@ -83,18 +87,8 @@
        
         </div>
     </section>
+    <script src="../src/manageCookie.js"></script>
+    <script src="../src/gamesGrid.js" ></script>
 
-    <script>
-        window.addEventListener('scroll', () => {
-            const scrollText = document.querySelector('.scroll-text');
-            const scrollPosition = window.scrollY;
-            
-            if (scrollPosition > 100) {
-                scrollText.classList.add('visible');
-            } else {
-                scrollText.classList.remove('visible');
-            }
-        });
-    </script>
 </body>
 </html>
