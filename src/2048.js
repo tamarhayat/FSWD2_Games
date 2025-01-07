@@ -3,7 +3,6 @@ let grid = [];
 let score = 0;
 let allUsers=JSON.parse(localStorage.getItem("usersDetails"));
 const currentUser=getCookie("username"); //use cookie
-//const currentUser= localStorage.getItem("currentUser");
 let highScore = allUsers.find(user => user.username === currentUser)?.games[1];
 let totalScore = allUsers.find(user => user.username === currentUser)?.totalScore;
 document.getElementById('gameOver').style.display = 'none';
@@ -18,14 +17,6 @@ function updateHighScore() {
         highScore = score;
         allUsers.find(user => user.username === currentUser).games[1]=highScore;
         document.getElementById('highScore').textContent = highScore;
-
-        // Update game state
-        const game2048 = gameState.games.find(g => g.name === '2048');
-        if (game2048) {
-            game2048.highScore = highScore;
-            game2048.lastPlayed = new Date();
-            updateScoreDisplay();
-        }
     }
     localStorage.setItem("usersDetails", JSON.stringify(allUsers)); //save the details
 
@@ -180,6 +171,13 @@ function checkWin(numVal) {
         return true;
 
     }
+}
+
+function goBack(){
+    totalScore+=score;
+    allUsers.find(user => user.username === currentUser).totalScore =totalScore;
+    localStorage.setItem("usersDetails", JSON.stringify(allUsers)); //save the details
+    window.location.href='games.html';
 }
 
 function newGame() {

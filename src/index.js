@@ -12,9 +12,16 @@ regform.addEventListener("submit", (event) => {
     const password =passwordField.value;
     const confirmPasswordField=document.getElementById("confirmPassword");
     const comfirmPassword=confirmPasswordField.value;
-
+    
+    //check that all the fields have input
     if(!firstname||!lastname||!email||!username||!password||!comfirmPassword){
         alert("Oops! It looks like you missed some fields\n we need all your details:)");
+        return;
+    }
+    //get all the users from the local storage
+    let users = JSON.parse(localStorage.getItem("usersDetails")) || [];
+    if (users.some(user => user.username === username)) {
+        alert("The username is already taken. Please choose another one.");
         return;
     }
 
@@ -44,8 +51,7 @@ regform.addEventListener("submit", (event) => {
         games: [0,0], //tetris is 0 and 2048 in in 1
         totalScore:+0
     };
-    //get all the users from the local storage
-    let users = JSON.parse(localStorage.getItem("usersDetails")) || [];
+    
 
     // save in LocalStorage
     users.push(user);
@@ -93,6 +99,7 @@ function autoLogin(){
     //return if there is username, and there is password, and if they matched, in the cookie
     return username && password && verifyUser(username,password);
 }
+
 function verifyUser(username,password){
     let users = JSON.parse(localStorage.getItem("usersDetails")) || null
     if(!users){
