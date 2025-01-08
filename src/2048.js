@@ -12,15 +12,19 @@ const gridSize = 4;
 win= false;
 
 document.getElementById('highScore').textContent = highScore;
+
 function updateHighScore() {
     if (score > highScore) {
         highScore = score;
         allUsers.find(user => user.username === currentUser).games[1]=highScore;
         document.getElementById('highScore').textContent = highScore;
+       
     }
     localStorage.setItem("usersDetails", JSON.stringify(allUsers)); //save the details
 
 }
+
+
 
 function initGrid() {
     const gridElement = document.getElementById('grid');

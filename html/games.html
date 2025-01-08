@@ -10,8 +10,9 @@
 <body>
     <nav>
         <a href="#" class="logo">Game4U</a>
-        <div id="scoreContainer" class="score-display"">
+        <div id="scoreContainer" class="score-display" onclick="showRankingModal()">
             Total Score: <span id="score">0</span>
+        
         </div>
         <button onclick="logout()" class="logout">
             <i class="fa-solid fa-arrow-right-from-bracket"></i>
@@ -87,8 +88,34 @@
        
         </div>
     </section>
+
+    <div id="scoreRankingModal" class="modal" >
+        <div class="modal-content" onclick="closeRankingModal()">
+            <h2>Top Scores 🏆</h2>
+            <div class="leaderboard">
+                <div class="rank-item">
+                    <span>🥇</span>
+                    <span id="rank1"></span>
+                    <span id="score1"></span>
+                </div>
+                <div class="rank-item">
+                    <span>🥈</span>
+                    <span id="rank2"></span>
+                    <span id="score2"></span>
+                </div>
+                <div class="rank-item">
+                    <span>🥉</span>
+                    <span id="rank3"></span>
+                    <span id="score3"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="../src/manageCookie.js"></script>
     <script src="../src/gamesGrid.js" ></script>
+    <script src="../src/ScoreRanking.js"></script>
 
+   
 </body>
 </html>
