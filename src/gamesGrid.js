@@ -36,11 +36,11 @@ window.addEventListener('scroll', () => {
 
 
 function showRankingModal() {
-    console.log('Show modal clicked'); // Debug log
+  
     const modal = document.getElementById('scoreRankingModal');
-    console.log('Modal element:', modal); // Debug log
+  
     if (!modal) {
-        console.error('Modal element not found');
+       
         return;
     }
     modal.style.display = 'block';
@@ -48,7 +48,7 @@ function showRankingModal() {
 }
 
 function closeRankingModal() {
-    console.log('Close modal clicked'); // Debug log
+  
     const modal = document.getElementById('scoreRankingModal');
     if (modal) {
         modal.style.display = 'none';
@@ -56,11 +56,8 @@ function closeRankingModal() {
 }
 
 function displayTopThree() {
-    console.log('Displaying top three'); // Debug log
-    console.log('All users:', allUsers); // Debug log
+ 
     let topThree = getTopThreeUsers(allUsers);
-    console.log('Top three:', topThree); // Debug log
-    
     for (let i = 0; i < topThree.length; i++) {
         const rankElement = document.getElementById(`rank${i+1}`);
         const scoreElement = document.getElementById(`score${i+1}`);
@@ -74,7 +71,7 @@ function displayTopThree() {
 
 function getTopThreeUsers(users) {
     if (!Array.isArray(users) || users.length === 0) {
-        console.error('No users found or invalid users data');
+       
         return [];
     }
     
@@ -91,6 +88,4 @@ window.onclick = function(event) {
     }
 }
 
-// Debug log on load
-console.log('ScoreRanking.js loaded');
-console.log('Initial allUsers:', allUsers);
+ 

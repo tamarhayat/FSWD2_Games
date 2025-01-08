@@ -13,19 +13,10 @@ win= false;
 
 document.getElementById('highScore').textContent = highScore;
 
-function updateHighScore() {
-    if (score > highScore) {
-        highScore = score;
-        allUsers.find(user => user.username === currentUser).games[1]=highScore;
-        document.getElementById('highScore').textContent = highScore;
-       
-    }
-    localStorage.setItem("usersDetails", JSON.stringify(allUsers)); //save the details
-
-}
 
 
 
+//initlaiz game grid. 
 function initGrid() {
     const gridElement = document.getElementById('grid');
     gridElement.innerHTML = '';
@@ -41,6 +32,18 @@ function initGrid() {
             gridElement.appendChild(cell);
         }
     }
+}
+
+// update the high score 
+function updateHighScore() {
+    if (score > highScore) {
+        highScore = score;
+        allUsers.find(user => user.username === currentUser).games[1]=highScore;
+        document.getElementById('highScore').textContent = highScore;
+       
+    }
+    localStorage.setItem("usersDetails", JSON.stringify(allUsers)); //save the details
+
 }
 
 function updateDisplay() {
@@ -71,6 +74,8 @@ function addNewTile() {
     }
 }
 
+
+//get the move diraction and make the move
 function move(direction) {
     let moved = false;
     const newGrid = JSON.parse(JSON.stringify(grid));
@@ -166,7 +171,8 @@ function checkGameOver() {
 
     return true;
 }
-//when gets 2048
+
+// win -when gets 2048
 function checkWin(numVal) {
 
     if (numVal === 2048) { 
@@ -195,6 +201,7 @@ function newGame() {
     updateDisplay();
 }
 
+// listen to mov diraction
 document.addEventListener('keydown', (event) => {
     switch(event.key) {
         case 'ArrowUp':

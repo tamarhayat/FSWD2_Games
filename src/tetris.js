@@ -179,7 +179,6 @@ function isValidDraw(key) {
         for(let index of tempArr)
             if(cells[index].className==='shapeBoard')
                 {
-                    console.log("hi");
                     return false;
                 }
     }
