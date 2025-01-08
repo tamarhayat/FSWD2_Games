@@ -159,6 +159,9 @@ text-transform: uppercase;
     border-radius: 20px;
     z-index: 1001;
 }
+.score-display:hover{
+    cursor: pointer;
+}
 
 .inDeveloping {
     position: relative;
